@@ -232,6 +232,9 @@ public class SignUpPage extends javax.swing.JFrame {
     private void btnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignupActionPerformed
         // TODO add your handling code here:
         validation();
+        if(validation()){
+            insertData();
+        }
     }//GEN-LAST:event_btnsignupActionPerformed
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
