@@ -4,8 +4,15 @@
  */
 package com.mycompany.feemanagementsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -21,6 +28,28 @@ public class SignUpPage extends javax.swing.JFrame {
     public SignUpPage() {
         initComponents();
     }
+
+        int id = 0;
+    int getId(){
+        ResultSet rs = null;
+        try{
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/feemanagementdb", "root", "shubham");
+            
+           String query = "SELECT max(id) from signup";
+            Statement st = con.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                id++;
+                id = rs.getInt(1);
+            } 
+        }
+        catch(Exception e){    
+            e.printStackTrace();
+        }
+        return id;  
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
