@@ -293,6 +293,38 @@ public class SignUpPage extends javax.swing.JFrame {
    
     String fname, lname,uname, password, cpassword, mnumber;
     Date dob;
+
+        void insertData(){
+        SimpleDateFormat s1 = new SimpleDateFormat("yyy-MM-dd");
+        String dob1 = s1.format(dob);
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/feemanagementdb", "root", "shubham");
+            
+            String query = "INSERT INTO signup VALUES(?,?,?,?,?,?,?)";
+            PreparedStatement smt = con.prepareStatement(query);
+            
+            smt.setInt(1, getId());
+            smt.setString(2, fname);
+            smt.setString(3, lname);
+            smt.setString(4, uname);
+            smt.setString(5, password);
+            smt.setString(6, dob1);
+            smt.setString(7, mnumber);
+            int i = smt.executeUpdate();
+            if(i > 0){
+                JOptionPane.showMessageDialog(this, "Record Inserted Succesfully");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Record Not Inserted Succesfully");
+
+            }
+               
+        }
+        catch(Exception e){
+            
+        }
+    }
     boolean validation(){
         fname = txtfname.getText();
         lname = txtlname.getText();
