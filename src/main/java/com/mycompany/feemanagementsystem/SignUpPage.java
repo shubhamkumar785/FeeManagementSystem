@@ -38,8 +38,10 @@ public class SignUpPage extends javax.swing.JFrame {
             Statement st = con.createStatement();
             rs = st.executeQuery(query);
             while(rs.next()){
+                id = rs.getInt(1);
                 id++;
-                //id = rs.getInt(1);
+
+                
             } 
         }
         catch(Exception e){    
@@ -67,7 +69,7 @@ public class SignUpPage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtfname = new javax.swing.JTextField();
-        txtlname = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
         txtuname = new javax.swing.JTextField();
         txtcnumber = new javax.swing.JTextField();
         txtpfield = new javax.swing.JPasswordField();
@@ -110,12 +112,12 @@ public class SignUpPage extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 170));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel2.setText("First Name");
+        jLabel2.setText("         Name");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 20));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel3.setText("Last Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 120, -1));
+        jLabel3.setText("   Email");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel4.setText("User Name");
@@ -140,8 +142,8 @@ public class SignUpPage extends javax.swing.JFrame {
         txtfname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         getContentPane().add(txtfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 190, -1));
 
-        txtlname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        getContentPane().add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 190, -1));
+        txtemail.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 190, -1));
 
         txtuname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         getContentPane().add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 190, -1));
@@ -233,7 +235,7 @@ public class SignUpPage extends javax.swing.JFrame {
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {                                         
         txtfname.setText("");
-        txtlname.setText("");
+        txtemail.setText("");
         txtuname.setText("");
         txtpfield.setText("");
         txtcpfield.setText("");
@@ -279,7 +281,7 @@ public class SignUpPage extends javax.swing.JFrame {
     private void txtcnumberKeyTyped(java.awt.event.KeyEvent evt) {                                    
         mobileCheck();
     }                                   
-    String fname, lname,uname, password, cpassword, mnumber;
+    String fname, email,uname, password, cpassword, mnumber;
     Date dob;
     
     void insertData(){
@@ -294,7 +296,7 @@ public class SignUpPage extends javax.swing.JFrame {
             
             smt.setInt(1, getId());
             smt.setString(2, fname);
-            smt.setString(3, lname);
+            smt.setString(3, email);
             smt.setString(4, uname);
             smt.setString(5, password);
             smt.setString(6, dob1);
@@ -315,7 +317,7 @@ public class SignUpPage extends javax.swing.JFrame {
     }
     boolean validation(){
         fname = txtfname.getText();
-        lname = txtlname.getText();
+        email = txtemail.getText();
         uname = txtuname.getText();
         password = txtpfield.getText();
         cpassword = txtcpfield.getText();
@@ -326,7 +328,7 @@ public class SignUpPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please Enter Your First Name");
             return false;
         }
-        if(lname.equals("")){
+        if(email.equals("")){
             JOptionPane.showMessageDialog(this, "Please Enter Your Last Name");
             return false;
         }
@@ -426,8 +428,8 @@ public class SignUpPage extends javax.swing.JFrame {
     private javax.swing.JTextField txtcnumber;
     private javax.swing.JPasswordField txtcpfield;
     private com.toedter.calendar.JDateChooser txtdob;
+    private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtfname;
-    private javax.swing.JTextField txtlname;
     private javax.swing.JPasswordField txtpfield;
     private javax.swing.JTextField txtuname;
     // End of variables declaration                   
