@@ -13,11 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-
-
-
-
-
 /**
  *
  * @author Shubham Pathak
@@ -74,88 +69,98 @@ public class SignUpPage extends javax.swing.JFrame {
         txtfname = new javax.swing.JTextField();
         txtlname = new javax.swing.JTextField();
         txtuname = new javax.swing.JTextField();
+        txtcnumber = new javax.swing.JTextField();
         txtpfield = new javax.swing.JPasswordField();
         txtcpfield = new javax.swing.JPasswordField();
-        txtcnumber = new javax.swing.JTextField();
         txtdob = new com.toedter.calendar.JDateChooser();
-        btnclear = new javax.swing.JButton();
-        btnlogin = new javax.swing.JButton();
-        btnsignup = new javax.swing.JButton();
-        lablcpassworderror = new javax.swing.JLabel();
         lablpassworderror = new javax.swing.JLabel();
         lablcnumbererror = new javax.swing.JLabel();
+        btnlogin = new javax.swing.JButton();
+        btnclear = new javax.swing.JButton();
+        btnsignup = new javax.swing.JButton();
+        lablcpassworderror = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Sign Up");
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Signup");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addGap(288, 288, 288)
+                .addComponent(jLabel1)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel1)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 160));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 170));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel2.setText("First Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 20));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel3.setText("Last Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 90, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 120, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Username");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, 30));
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel4.setText("User Name");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 120, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel5.setText("Password");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 90, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 120, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel6.setText("Confirm Password");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 160, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 170, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel7.setText("D.O.B");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 50, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 60, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Contact Number");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 150, -1));
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel8.setText("Contact");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 80, -1));
 
-        txtfname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfnameActionPerformed(evt);
+        txtfname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        getContentPane().add(txtfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 190, -1));
+
+        txtlname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        getContentPane().add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 190, -1));
+
+        txtuname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        getContentPane().add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 190, -1));
+
+        txtcnumber.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        txtcnumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcnumberKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcnumberKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcnumberKeyTyped(evt);
             }
         });
-        getContentPane().add(txtfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 200, -1));
+        getContentPane().add(txtcnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 190, -1));
 
-        txtlname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        getContentPane().add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 200, -1));
-
-        txtuname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        getContentPane().add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 200, -1));
-
-        txtpfield.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtpfield.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         txtpfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpfieldActionPerformed(evt);
@@ -172,93 +177,69 @@ public class SignUpPage extends javax.swing.JFrame {
                 txtpfieldKeyTyped(evt);
             }
         });
-        getContentPane().add(txtpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 200, -1));
+        getContentPane().add(txtpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 190, -1));
 
-        txtcpfield.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtcpfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcpfieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtcpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 200, -1));
+        txtcpfield.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        getContentPane().add(txtcpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 190, -1));
+        getContentPane().add(txtdob, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 190, 30));
 
-        txtcnumber.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtcnumber.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtcnumberKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtcnumberKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtcnumberKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtcnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 200, -1));
+        lablpassworderror.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lablpassworderror.setForeground(new java.awt.Color(204, 0, 0));
+        getContentPane().add(lablpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 270, 30));
 
-        txtdob.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        getContentPane().add(txtdob, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 200, 30));
+        lablcnumbererror.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lablcnumbererror.setForeground(new java.awt.Color(204, 0, 0));
+        getContentPane().add(lablcnumbererror, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 280, 30));
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnclear.setText("Clear");
-        btnclear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnclearActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 110, 40));
-
-        btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnlogin.setText("Login");
+        btnlogin.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        btnlogin.setLabel("Login");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 110, 40));
+        getContentPane().add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 90, 30));
 
-        btnsignup.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnsignup.setText("Sign Up");
+        btnclear.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        btnclear.setLabel("Clear");
+        btnclear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnclearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 90, 30));
+
+        btnsignup.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        btnsignup.setLabel("SignUp");
         btnsignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsignupActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 110, 40));
+        getContentPane().add(btnsignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 520, 100, 30));
 
-        lablcpassworderror.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lablcpassworderror.setForeground(new java.awt.Color(255, 0, 0));
-        lablcpassworderror.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                lablcpassworderrorKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                lablcpassworderrorKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                lablcpassworderrorKeyTyped(evt);
-            }
-        });
-        getContentPane().add(lablcpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 240, 30));
-
-        lablpassworderror.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lablpassworderror.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(lablpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 240, 30));
-
-        lablcnumbererror.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lablcnumbererror.setForeground(new java.awt.Color(204, 51, 0));
-        getContentPane().add(lablcnumbererror, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 240, 30));
+        lablcpassworderror.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lablcpassworderror.setForeground(new java.awt.Color(204, 0, 0));
+        getContentPane().add(lablcpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 384, 270, 30));
 
         pack();
     }// </editor-fold>                        
 
-    private void txtfnameActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        Login l1 = new Login();
+        l1.show();
+        this.dispose();
     }                                        
 
-    private void txtpfieldActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-    }                                         
+    private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        txtfname.setText("");
+        txtlname.setText("");
+        txtuname.setText("");
+        txtpfield.setText("");
+        txtcpfield.setText("");
+      //  txtdob.setDate("");
+        txtcnumber.setText("");
+    }                                        
 
     private void btnsignupActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
@@ -271,63 +252,33 @@ public class SignUpPage extends javax.swing.JFrame {
         }
     }                                         
 
-    private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void txtpfieldActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }                                        
-
-    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
-
-    private void txtcpfieldActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
+    }                                         
 
     private void txtpfieldKeyPressed(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
         passwordCheck();
     }                                    
 
     private void txtpfieldKeyReleased(java.awt.event.KeyEvent evt) {                                      
-        // TODO add your handling code here:
         passwordCheck();
     }                                     
 
     private void txtpfieldKeyTyped(java.awt.event.KeyEvent evt) {                                   
-        // TODO add your handling code here:
         passwordCheck();
     }                                  
 
     private void txtcnumberKeyPressed(java.awt.event.KeyEvent evt) {                                      
-        // TODO add your handling code here:
         mobileCheck();
     }                                     
 
     private void txtcnumberKeyReleased(java.awt.event.KeyEvent evt) {                                       
-        // TODO add your handling code here:
-        mobileCheck();
+       mobileCheck();
     }                                      
 
     private void txtcnumberKeyTyped(java.awt.event.KeyEvent evt) {                                    
-        // TODO add your handling code here:
         mobileCheck();
     }                                   
-
-    private void lablcpassworderrorKeyPressed(java.awt.event.KeyEvent evt) {                                              
-        // TODO add your handling code here:
-        currentPasswordCheck();
-    }                                             
-
-    private void lablcpassworderrorKeyReleased(java.awt.event.KeyEvent evt) {                                               
-        // TODO add your handling code here:
-        currentPasswordCheck();
-    }                                              
-
-    private void lablcpassworderrorKeyTyped(java.awt.event.KeyEvent evt) {                                            
-        // TODO add your handling code here:
-        currentPasswordCheck();
-    }                                           
-   
     String fname, lname,uname, password, cpassword, mnumber;
     Date dob;
     
