@@ -55,6 +55,6 @@ CREATE TABLE signup (
 
 🔐 Security Note
 
-Passwords are currently stored as plain text.
-For production-level projects, use password hashing (BCrypt).
+- Passwords are currently stored as plain text.
+- For production-level projects, use password hashing (BCrypt).
 ---
