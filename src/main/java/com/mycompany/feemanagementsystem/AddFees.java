@@ -4,9 +4,11 @@
  */
 package com.mycompany.feemanagementsystem;
 
+import java.text.NumberFormat;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-/**
+/** 
  *
  * @author Shubham Pathak
  */
@@ -34,6 +36,69 @@ public class AddFees extends javax.swing.JFrame {
         initComponents();
         displayCashFirst();
     }
+
+public class NumberToWordsConverter {
+
+    static String[] units = {
+        "", "One", "Two", "Three", "Four", "Five", "Six",
+        "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
+        "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+        "Seventeen", "Eighteen", "Nineteen"
+    };
+
+    static String[] tens = {
+        "", "", "Twenty", "Thirty", "Forty", "Fifty",
+        "Sixty", "Seventy", "Eighty", "Ninety"
+    };
+
+    public static String convert(final int n) {
+
+        if (n < 0) {
+            return "Minus " + convert(-n);
+        }
+
+        if (n < 20) {
+            return units[n];
+        }
+
+        if (n < 100) {
+            return tens[n / 10] +
+                   ((n % 10 != 0) ? " " + units[n % 10] : "");
+        }
+
+        if (n < 1000) {
+            return units[n / 100] + " Hundred" +
+                   ((n % 100 != 0) ? " " + convert(n % 100) : "");
+        }
+
+        if (n < 100000) {
+            return convert(n / 1000) + " Thousand" +
+                   ((n % 1000 != 0) ? " " + convert(n % 1000) : "");
+        }
+
+        if (n < 10000000) {
+            return convert(n / 100000) + " Lakh" +
+                   ((n % 100000 != 0) ? " " + convert(n % 100000) : "");
+        }
+
+        return convert(n / 10000000) + " Crore" +
+               ((n % 10000000 != 0) ? " " + convert(n % 10000000) : "");
+    }
+
+    public static void main(final String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the Amount: ");
+        int n = sc.nextInt();
+
+        System.out.println(convert(n) + " Only");
+    }
+
+        private static void setText(String convert) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
+
+
     
     boolean validation(){
         if(txt_rec_name.getText().equals("")){
@@ -108,7 +173,7 @@ public class AddFees extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txt_amount = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txt_total_in_words = new javax.swing.JTextField();
         txt_total = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -145,6 +210,11 @@ public class AddFees extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
 
@@ -192,6 +262,11 @@ public class AddFees extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
+        jButton6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton6KeyPressed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(204, 204, 204));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -199,6 +274,11 @@ public class AddFees extends javax.swing.JFrame {
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
+            }
+        });
+        jButton7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton7KeyPressed(evt);
             }
         });
 
@@ -292,7 +372,7 @@ public class AddFees extends javax.swing.JFrame {
         jPanel4.add(lbl_rec_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 120, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CC", "Cash", "PhonePe", "Paytm", "Cheque", "Card" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Java - Core", "Java Backend", "Software Testing", "Spring Boot", "JSP Servlet", "Jawa Swing", "Git & GitHub", "DBMS", " " }));
         jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 110, -1));
 
         jSeparator2.setBackground(new java.awt.Color(153, 153, 153));
@@ -313,29 +393,29 @@ public class AddFees extends javax.swing.JFrame {
         jLabel14.setText("HEAD");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 60, 20));
 
-        txt_amount.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_amountActionPerformed(evt);
             }
         });
-        jPanel4.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 180, -1));
+        jPanel4.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 180, 30));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txt_total_in_words.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_total_in_words.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txt_total_in_wordsActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 350, -1));
+        jPanel4.add(txt_total_in_words, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 350, 30));
 
-        txt_total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_total.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_totalActionPerformed(evt);
             }
         });
-        jPanel4.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 180, -1));
+        jPanel4.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 180, 30));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("COURSE");
@@ -348,25 +428,25 @@ public class AddFees extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 780, 50));
 
-        txt_cgst.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_cgst.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_cgst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cgstActionPerformed(evt);
             }
         });
-        jPanel4.add(txt_cgst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 180, -1));
+        jPanel4.add(txt_cgst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 180, 30));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("CGST 7%");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 70, -1));
 
-        txt_sgst.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_sgst.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_sgst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_sgstActionPerformed(evt);
             }
         });
-        jPanel4.add(txt_sgst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 180, -1));
+        jPanel4.add(txt_sgst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 180, 30));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("SGST 7%");
@@ -376,13 +456,13 @@ public class AddFees extends javax.swing.JFrame {
         jLabel19.setText("SERIAL NO.");
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, 20));
 
-        jTextField13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField13ActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 280, -1));
+        jPanel4.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 280, 30));
 
         jSeparator5.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 210, 10));
@@ -396,6 +476,7 @@ public class AddFees extends javax.swing.JFrame {
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 130, -1));
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -461,7 +542,9 @@ public class AddFees extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        HomePage hp = new HomePage();
+        hp.show();
+        this.dispose();
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -481,11 +564,15 @@ public class AddFees extends javax.swing.JFrame {
     }                                        
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        HomePage hp = new HomePage();
+        hp.show();
+        this.dispose();
     }                                        
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+       Login lg = new Login();
+       lg.show();
+       this.dispose();
     }                                        
 
     private void txt_rec_nameActionPerformed(java.awt.event.ActionEvent evt) {                                             
@@ -511,15 +598,17 @@ public class AddFees extends javax.swing.JFrame {
         txt_sgst.setText(Float.toString(sgst));
         float sum = amt + cgst + sgst;
         txt_total.setText(Float.toString(sum));
+        
+        txt_total_in_words.setText(NumberToWordsConverter.convert((int)sum));
     }                                          
 
     private void txt_cheque_numActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
     }                                              
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txt_total_in_wordsActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
-    }                                           
+    }                                                  
 
     private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
@@ -604,6 +693,18 @@ public class AddFees extends javax.swing.JFrame {
             
     }                                        
 
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {                                    
+        
+    }                                   
+
+    private void jButton7KeyPressed(java.awt.event.KeyEvent evt) {                                    
+        
+    }                                   
+
+    private void jButton6KeyPressed(java.awt.event.KeyEvent evt) {                                    
+       
+    }                                   
+
     /**
      * @param args the command line arguments
      */
@@ -662,7 +763,6 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel labl_cheque_num;
     private javax.swing.JLabel lbl_bank_name;
     private javax.swing.JLabel lbl_date;
@@ -681,5 +781,6 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JTextField txt_receipt_num;
     private javax.swing.JTextField txt_sgst;
     private javax.swing.JTextField txt_total;
+    private javax.swing.JTextField txt_total_in_words;
     // End of variables declaration                   
 }
