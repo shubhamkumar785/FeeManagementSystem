@@ -65,6 +65,13 @@ public class AddFees extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jTextField6 = new javax.swing.JTextField();
@@ -156,24 +163,24 @@ public class AddFees extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(59, 59, 59)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(56, 56, 56)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(55, 55, 55)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(63, 63, 63)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(51, 51, 51)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(85, 85, 85))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 760));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 638, 474, -1));
@@ -246,15 +253,15 @@ public class AddFees extends javax.swing.JFrame {
         jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 210, 10));
 
         jSeparator3.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 770, -1));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 790, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("AMOUNT");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 70, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("SERIAL NO.");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, -1));
+        jLabel13.setText("REMARK");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 70, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("HEAD");
@@ -274,7 +281,7 @@ public class AddFees extends javax.swing.JFrame {
                 jTextField7ActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 280, -1));
+        jPanel4.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 350, -1));
 
         jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -289,11 +296,11 @@ public class AddFees extends javax.swing.JFrame {
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 60, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("TOTAL");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 60, -1));
+        jLabel16.setText("SIGNATURE");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 100, -1));
 
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 770, 50));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 780, 50));
 
         jTextField11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -304,8 +311,8 @@ public class AddFees extends javax.swing.JFrame {
         jPanel4.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 180, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setText("CGST");
-        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 60, -1));
+        jLabel17.setText("CGST 7%");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 70, -1));
 
         jTextField12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
@@ -316,10 +323,39 @@ public class AddFees extends javax.swing.JFrame {
         jPanel4.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 180, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setText("SGST");
+        jLabel18.setText("SGST 7%");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 60, -1));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 780, 430));
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setText("SERIAL NO.");
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, 20));
+
+        jTextField13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField13ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 280, -1));
+
+        jSeparator5.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 494, 210, 10));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setText("TOTAL");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, 60, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("TOTAL IN WORDS");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 130, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 410, -1));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 780, 560));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("MODE OF PAYMENT");
@@ -337,7 +373,7 @@ public class AddFees extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 180, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 770, 640));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 780, 770));
 
         pack();
     }// </editor-fold>                        
@@ -410,6 +446,10 @@ public class AddFees extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                            
 
+    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+    }                                            
+
     /**
      * @param args the command line arguments
      */
@@ -453,6 +493,9 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -463,12 +506,16 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
