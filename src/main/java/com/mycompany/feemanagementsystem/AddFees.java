@@ -4,6 +4,8 @@
  */
 package com.mycompany.feemanagementsystem;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Shubham Pathak
@@ -23,12 +25,52 @@ public class AddFees extends javax.swing.JFrame {
         txt_dd_num.setVisible(false);
         txt_bank_name.setVisible(false);
         lbl_bank_name.setVisible(false);
+        txt_rec_name.setVisible(true);
+        lbl_rec_name.setVisible(true);
         
         
     }
     public AddFees() {
         initComponents();
         displayCashFirst();
+    }
+    
+    boolean validation(){
+        if(txt_rec_name.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please Enter Receiver Name");
+            return false;
+        }
+        if(date_c.getDate()== null){
+            JOptionPane.showMessageDialog(this, "Please Enter Date");
+            return false;
+        }
+        if(txt_amount.getText().equals("") || txt_amount.getText().matches("[0-9]+") == false){
+            JOptionPane.showMessageDialog(this, "Please Enter Amounts in Number");
+            return false;
+        }
+        if(combo_mode_payment.getSelectedItem().toString().equalsIgnoreCase("cheque")){
+            if(txt_cheque_num.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Please Enter Cheque Number");
+                return false;
+            }
+            if(txt_bank_name.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Please Enter Bank Details");
+                return false;
+            }
+        }
+        if(combo_mode_payment.getSelectedItem().toString().equalsIgnoreCase("dd")){
+            if(txt_dd_num.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Please Enter DD Number");
+                return false;
+            }
+            if(txt_bank_name.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Please Enter Bank Name");
+                return false;
+            }
+        }
+        
+      
+        return true;
     }
 
     /**
@@ -57,17 +99,15 @@ public class AddFees extends javax.swing.JFrame {
         lbl_date = new javax.swing.JLabel();
         txt_bank_name = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txt_rec_name = new javax.swing.JTextField();
+        lbl_rec_name = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txt_amount = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -223,7 +263,7 @@ public class AddFees extends javax.swing.JFrame {
                 txt_receipt_numActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_receipt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 180, -1));
+        jPanel3.add(txt_receipt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 200, -1));
 
         lbl_date.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_date.setText("DATE");
@@ -235,33 +275,21 @@ public class AddFees extends javax.swing.JFrame {
                 txt_bank_nameActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_bank_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 180, -1));
+        jPanel3.add(txt_bank_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 200, -1));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("TO");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 30, -1));
-
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        txt_rec_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_rec_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                txt_rec_nameActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 120, -1));
+        jPanel4.add(txt_rec_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 220, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("RECEIVED FROM FOR THE GIVEN");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, -1));
-
-        jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 140, 30));
+        lbl_rec_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_rec_name.setText("RECEIVER NAME");
+        jPanel4.add(lbl_rec_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 120, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CC", "Cash", "PhonePe", "Paytm", "Cheque", "Card" }));
@@ -285,13 +313,13 @@ public class AddFees extends javax.swing.JFrame {
         jLabel14.setText("HEAD");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 60, 20));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txt_amount.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txt_amountActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 180, -1));
+        jPanel4.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 180, -1));
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -375,6 +403,11 @@ public class AddFees extends javax.swing.JFrame {
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton8.setText("PRINT");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 100, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 780, 560));
@@ -385,6 +418,7 @@ public class AddFees extends javax.swing.JFrame {
 
         combo_mode_payment.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         combo_mode_payment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DD", "CASH", "PhonePe", "Paytm", "CHEQUE", "CARD" }));
+        combo_mode_payment.setSelectedIndex(1);
         combo_mode_payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_mode_paymentActionPerformed(evt);
@@ -398,7 +432,7 @@ public class AddFees extends javax.swing.JFrame {
                 txt_cheque_numActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_cheque_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 180, -1));
+        jPanel3.add(txt_cheque_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 200, -1));
 
         lbl_receipt_num1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_receipt_num1.setText("AVC56677GHI");
@@ -454,13 +488,9 @@ public class AddFees extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                        
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void txt_rec_nameActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
     }                                            
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
 
     private void txt_bank_nameActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
@@ -470,9 +500,9 @@ public class AddFees extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                               
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }                                           
+    }                                          
 
     private void txt_cheque_numActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
@@ -506,8 +536,10 @@ public class AddFees extends javax.swing.JFrame {
         if(combo_mode_payment.getSelectedIndex() == 0){
             lbl_dd_num.setVisible(true);
             txt_dd_num.setVisible(true);
-            lbl_bank_name.setVisible(true);
+            lbl_rec_name.setVisible(true);
+            txt_rec_name.setVisible(true);
             txt_bank_name.setVisible(true);
+            lbl_bank_name.setVisible(true);
             
             labl_cheque_num.setVisible(false);
             txt_cheque_num.setVisible(false);
@@ -515,15 +547,50 @@ public class AddFees extends javax.swing.JFrame {
             
         }
         if(combo_mode_payment.getSelectedIndex() == 1){
-            lbl_dd_num.setVisible(false);
             labl_cheque_num.setVisible(false);
-            txt_cheque_num.setVisible(false);
             txt_dd_num.setVisible(false);
+            txt_cheque_num.setVisible(false);
+            lbl_dd_num.setVisible(false);
+            lbl_rec_name.setVisible(true);
+            txt_rec_name.setVisible(true);  
             txt_bank_name.setVisible(false);
             lbl_bank_name.setVisible(false);
-        
+        }
+        if(combo_mode_payment.getSelectedIndex() == 4){
+            labl_cheque_num.setVisible(true);
+            txt_dd_num.setVisible(false);
+            txt_cheque_num.setVisible(true);
+            lbl_dd_num.setVisible(false);
+            lbl_rec_name.setVisible(true);
+            txt_rec_name.setVisible(true);  
+            txt_bank_name.setVisible(true);
+            lbl_bank_name.setVisible(true);
+        }
+        if(combo_mode_payment.getSelectedIndex() == 2){
+            labl_cheque_num.setVisible(false);
+            txt_dd_num.setVisible(false);
+            txt_cheque_num.setVisible(false);
+            lbl_dd_num.setVisible(false);
+            lbl_rec_name.setVisible(true);
+            txt_rec_name.setVisible(true);  
+            txt_bank_name.setVisible(false);
+            lbl_bank_name.setVisible(false);
+        }
+        if(combo_mode_payment.getSelectedIndex() == 3){
+            labl_cheque_num.setVisible(false);
+            txt_dd_num.setVisible(false);
+            txt_cheque_num.setVisible(false);
+            lbl_dd_num.setVisible(false);
+            lbl_rec_name.setVisible(true);
+            txt_rec_name.setVisible(true);  
+            txt_bank_name.setVisible(false);
+            lbl_bank_name.setVisible(false);
         }
     }                                                  
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        validation();
+    }                                        
 
     /**
      * @param args the command line arguments
@@ -562,8 +629,6 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -584,25 +649,25 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel labl_cheque_num;
     private javax.swing.JLabel lbl_bank_name;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JLabel lbl_dd_num;
     private javax.swing.JLabel lbl_gstin;
     private javax.swing.JLabel lbl_mode_payment;
+    private javax.swing.JLabel lbl_rec_name;
     private javax.swing.JLabel lbl_receipt_num;
     private javax.swing.JLabel lbl_receipt_num1;
+    private javax.swing.JTextField txt_amount;
     private javax.swing.JTextField txt_bank_name;
     private javax.swing.JTextField txt_cheque_num;
     private javax.swing.JTextField txt_dd_num;
+    private javax.swing.JTextField txt_rec_name;
     private javax.swing.JTextField txt_receipt_num;
     // End of variables declaration                   
 }
