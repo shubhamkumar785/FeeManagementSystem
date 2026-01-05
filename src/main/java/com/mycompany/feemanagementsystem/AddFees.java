@@ -109,13 +109,13 @@ public class AddFees extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txt_amount = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txt_total = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField11 = new javax.swing.JTextField();
+        txt_cgst = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txt_sgst = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
@@ -329,13 +329,13 @@ public class AddFees extends javax.swing.JFrame {
         });
         jPanel4.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 350, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txt_total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txt_totalActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 180, -1));
+        jPanel4.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 180, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("COURSE");
@@ -348,25 +348,25 @@ public class AddFees extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 780, 50));
 
-        jTextField11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        txt_cgst.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_cgst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                txt_cgstActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 180, -1));
+        jPanel4.add(txt_cgst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 180, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("CGST 7%");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 70, -1));
 
-        jTextField12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        txt_sgst.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_sgst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                txt_sgstActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 180, -1));
+        jPanel4.add(txt_sgst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 180, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("SGST 7%");
@@ -501,7 +501,16 @@ public class AddFees extends javax.swing.JFrame {
     }                                               
 
     private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        String s1 = txt_amount.getText();
+        float amt = Float.parseFloat(s1);
+        
+        float cgst = amt * 0.07f;
+        float sgst = amt * 0.07f;
+        
+        txt_cgst.setText(Float.toString(cgst));
+        txt_sgst.setText(Float.toString(sgst));
+        float sum = amt + cgst + sgst;
+        txt_total.setText(Float.toString(sum));
     }                                          
 
     private void txt_cheque_numActionPerformed(java.awt.event.ActionEvent evt) {                                               
@@ -512,17 +521,17 @@ public class AddFees extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                           
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }                                           
+    }                                         
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void txt_cgstActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                            
+    }                                        
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void txt_sgstActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                            
+    }                                        
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
@@ -589,7 +598,10 @@ public class AddFees extends javax.swing.JFrame {
     }                                                  
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        validation();
+        if(validation() == true){
+            
+        }
+            
     }                                        
 
     /**
@@ -649,11 +661,8 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel labl_cheque_num;
     private javax.swing.JLabel lbl_bank_name;
     private javax.swing.JLabel lbl_date;
@@ -665,9 +674,12 @@ public class AddFees extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_receipt_num1;
     private javax.swing.JTextField txt_amount;
     private javax.swing.JTextField txt_bank_name;
+    private javax.swing.JTextField txt_cgst;
     private javax.swing.JTextField txt_cheque_num;
     private javax.swing.JTextField txt_dd_num;
     private javax.swing.JTextField txt_rec_name;
     private javax.swing.JTextField txt_receipt_num;
+    private javax.swing.JTextField txt_sgst;
+    private javax.swing.JTextField txt_total;
     // End of variables declaration                   
 }
