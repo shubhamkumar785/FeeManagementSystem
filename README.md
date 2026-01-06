@@ -38,6 +38,7 @@ FeeManagementSystem
 │ ├── SignUpPage.java
 │ ├── Login.java
 │ └── HomePage.java
+| └── AddFees.java
 │
 ├── pom.xml
 └── README.md
