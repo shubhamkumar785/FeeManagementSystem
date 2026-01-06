@@ -189,7 +189,7 @@ public class NumberToWordsConverter {
         jLabel21 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton8 = new javax.swing.JButton();
+        btn_submit = new javax.swing.JButton();
         lbl_mode_payment = new javax.swing.JLabel();
         combo_mode_payment = new javax.swing.JComboBox<>();
         txt_cheque_num = new javax.swing.JTextField();
@@ -482,14 +482,14 @@ public class NumberToWordsConverter {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 670, -1));
 
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setText("PRINT");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btn_submit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_submit.setText("SUBMIT");
+        btn_submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btn_submitActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 530, 120, 40));
+        jPanel4.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 530, 120, 40));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 1290, 580));
 
@@ -686,12 +686,15 @@ public class NumberToWordsConverter {
         }
     }//GEN-LAST:event_combo_mode_paymentActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         if(validation() == true){
             
         }
+        Submit s = new Submit();
+        s.show();
+        this.dispose();
             
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btn_submitActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         
@@ -731,6 +734,7 @@ public class NumberToWordsConverter {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_submit;
     private javax.swing.JComboBox<String> combo_mode_payment;
     private com.toedter.calendar.JDateChooser date_c;
     private javax.swing.JButton jButton1;
@@ -740,7 +744,6 @@ public class NumberToWordsConverter {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
