@@ -1,7 +1,19 @@
-# Fee Management System 💼💻
+# 🎓 Fee Management System (Java Swing + MySQL)
 
-A **Java Swing–based Fee Management System** that allows users to **sign up, log in, and manage user data** with MySQL database integration.  
-This project is built using **Core Java, Swing GUI, JDBC, and MySQL** and is suitable for **college / academic projects**.
+A desktop-based **Fee Management System** developed using **Java Swing** and **MySQL**, designed to manage student fees efficiently with a clean and user-friendly interface.
+
+---
+
+## 📌 Project Overview
+
+This application helps institutes manage:
+- Student registration
+- Secure login
+- Fee entry with GST calculation
+- Course & record management
+- Reports and fee receipts
+
+Built using **Core Java (Swing GUI)** with **JDBC connectivity**.
 
 ---
 
@@ -30,6 +42,47 @@ FeeManagementSystem
 ├── pom.xml
 └── README.md
 ```
+---
+## 🖥️ Application Screens
+
+### 🔐 Login Page
+- Username & password authentication
+- Input validation
+- Navigation to Signup page
+
+### 📝 Signup Page
+- New user registration
+- Fields:
+  - Name
+  - Email
+  - Username
+  - Password & Confirm Password
+  - Date of Birth (Date Picker)
+  - Contact Number
+- Validation before database insertion
+
+### 🏠 Home Page (Dashboard)
+- Central dashboard with options:
+  - Add Fees
+  - Search Record
+  - View Course
+  - Edit Course
+  - View Report
+  - View Record
+  - About
+  - Logout
+
+### 💰 Add Fees Page
+- Receipt number generation
+- Mode of payment selection
+- Course selection
+- Automatic GST calculation:
+  - CGST 7%
+  - SGST 7%
+- Total amount calculation
+- Amount in words
+- Print-ready layout
+
 ---
 
 ## 🗄️ Database Setup
