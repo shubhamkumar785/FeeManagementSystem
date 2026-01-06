@@ -82,6 +82,7 @@ public class SignUpPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
@@ -94,57 +95,57 @@ public class SignUpPage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(446, 446, 446)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(735, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(464, Short.MAX_VALUE))
+                .addGap(675, 675, 675))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 170));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1530, 170));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel2.setText("         Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 120, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 120, 20));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel3.setText("   Email");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 70, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel4.setText("User Name");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 120, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel5.setText("Password");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 120, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 120, -1));
 
         jLabel6.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel6.setText("Confirm Password");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 170, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel7.setText("D.O.B");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 60, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 60, -1));
 
         jLabel8.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel8.setText("Contact");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 80, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 80, -1));
 
         txtfname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        getContentPane().add(txtfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 190, -1));
+        getContentPane().add(txtfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, 230, -1));
 
         txtemail.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 190, -1));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 230, -1));
 
         txtuname.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        getContentPane().add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 190, -1));
+        getContentPane().add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 230, -1));
 
         txtcnumber.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         txtcnumber.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -158,7 +159,7 @@ public class SignUpPage extends javax.swing.JFrame {
                 txtcnumberKeyTyped(evt);
             }
         });
-        getContentPane().add(txtcnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 190, -1));
+        getContentPane().add(txtcnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, 230, -1));
 
         txtpfield.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         txtpfield.addActionListener(new java.awt.event.ActionListener() {
@@ -177,19 +178,19 @@ public class SignUpPage extends javax.swing.JFrame {
                 txtpfieldKeyTyped(evt);
             }
         });
-        getContentPane().add(txtpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 190, -1));
+        getContentPane().add(txtpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 230, -1));
 
         txtcpfield.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        getContentPane().add(txtcpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 190, -1));
-        getContentPane().add(txtdob, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 190, 30));
+        getContentPane().add(txtcpfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 230, -1));
+        getContentPane().add(txtdob, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 480, 230, 30));
 
         lablpassworderror.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         lablpassworderror.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(lablpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 270, 30));
+        getContentPane().add(lablpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 400, 280, 30));
 
         lablcnumbererror.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         lablcnumbererror.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(lablcnumbererror, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 280, 30));
+        getContentPane().add(lablcnumbererror, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 520, 280, 30));
 
         btnlogin.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         btnlogin.setLabel("Login");
@@ -198,7 +199,7 @@ public class SignUpPage extends javax.swing.JFrame {
                 btnloginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 90, 30));
+        getContentPane().add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 90, 40));
 
         btnclear.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         btnclear.setLabel("Clear");
@@ -207,7 +208,7 @@ public class SignUpPage extends javax.swing.JFrame {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, 90, 30));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 580, 100, 40));
 
         btnsignup.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         btnsignup.setLabel("SignUp");
@@ -216,11 +217,11 @@ public class SignUpPage extends javax.swing.JFrame {
                 btnsignupActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 100, 30));
+        getContentPane().add(btnsignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 580, 100, 40));
 
         lablcpassworderror.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         lablcpassworderror.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(lablcpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 270, 30));
+        getContentPane().add(lablcpassworderror, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 440, 280, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
