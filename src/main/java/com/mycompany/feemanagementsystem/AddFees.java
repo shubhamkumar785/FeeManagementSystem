@@ -4,7 +4,13 @@
  */
 package com.mycompany.feemanagementsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -27,14 +33,87 @@ public class AddFees extends javax.swing.JFrame {
         txt_dd_num.setVisible(false);
         txt_bank_name.setVisible(false);
         lbl_bank_name.setVisible(false);
-        txt_rec_name.setVisible(true);
-        lbl_rec_name.setVisible(true);
+        toyear.setVisible(true);
+        lbl_rollno.setVisible(true);
         
         
+    }
+    public String insertData(){
+        int receiptno = Integer.parseInt(txt_receipt_num.getText());
+        String sname = txt_rec_name1.getText();
+        int rollno = Integer.parseInt(txt_rollno2.getText());
+        String paymentmode = combo_mode_payment.getSelectedItem().toString();
+        String chequeno = txt_cheque_num.getText();
+        String bankname = txt_bank_name.getText();
+        String ddno = txt_dd_num.getText();
+        String coursename = jComboBox2.getSelectedItem().toString();
+        String gst = lbl_receipt_num1.getText();
+        float total = Float.parseFloat(txt_total.getText());
+        SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date d = date_c.getDate();
+        String date = sd1.format(d);
+
+        float amount = Float.parseFloat(txt_amount.getText());
+        float cgst = Float.parseFloat(txt_cgst.getText());
+        float sgst = Float.parseFloat(txt_sgst.getText());
+        String totalinwords = txt_total_in_words.getText();
+        String remark = jTextArea1.getText();
+        int year1 = Integer.parseInt(fromyear.getText());
+        int year2 = Integer.parseInt(toyear.getText());
+        String status ="";
+        
+        try{
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/feemanagementdb", "root", "shubham");
+            
+           String query =
+"INSERT INTO fees_details (" +
+"reciept_no, student_name, roll_no, payment_mode, cheque_no, bank_name, dd_no, " +
+"course_name, gstin, total_amount, date, amount, cgst, sgst, total_in_words, remark, year1, year2" +
+") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+           PreparedStatement st = con.prepareStatement(query);
+           st.setInt(1, receiptno);
+           st.setString(2, sname);
+           st.setInt(3, rollno);
+           st.setString(4, paymentmode);
+           st.setString(5, chequeno);
+           st.setString(6, bankname);
+           st.setString(7, ddno);
+           st.setString(8, coursename);
+           st.setString(9, gst);
+           st.setFloat(10, total);
+           st.setString(11, date);
+           st.setFloat(12, amount);
+           st.setFloat(13, cgst);
+           st.setFloat(14, sgst);
+           st.setString(15, totalinwords);
+           st.setString(16, remark);
+           st.setInt(17, year1);
+           st.setInt(18, year2);
+           int count = st.executeUpdate();
+           
+           if(count == 1){
+               status = "Success";
+           }
+           else{
+               status = "Failed";
+           }
+
+           
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return status;
     }
     public AddFees() {
         initComponents();
         displayCashFirst();
+        fillComboBox();
+        int r = getRno();
+        r++;
+        txt_receipt_num.setText(Integer.toString(r));
     }
 
 public class NumberToWordsConverter {
@@ -101,7 +180,7 @@ public class NumberToWordsConverter {
 
     
     boolean validation(){
-        if(txt_rec_name.getText().equals("")){
+        if(txt_rec_name1.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Please Enter Receiver Name");
             return false;
         }
@@ -137,6 +216,42 @@ public class NumberToWordsConverter {
       
         return true;
     }
+    
+    void fillComboBox (){
+        try{
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/feemanagementdb", "root", "shubham");
+            
+           String query = "SELECT cname from course";
+           PreparedStatement st = con.prepareStatement(query);
+            ResultSet rs = st.executeQuery(query);
+           while(rs.next()){
+               jComboBox2.addItem(rs.getString("cname"));
+           }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public int getRno() {
+        int rno = 0;
+        try{
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/feemanagementdb", "root", "shubham");
+           PreparedStatement st = con.prepareStatement("SELECT max(reciept_no) FROM fees_details");
+            ResultSet rs = st.executeQuery();
+            
+            if(rs.next() == true){
+                //rno = rs.getInt("reciept_no");
+                rno = rs.getInt(1);
+            }
+           
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return rno;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,7 +259,7 @@ public class NumberToWordsConverter {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -164,8 +279,8 @@ public class NumberToWordsConverter {
         lbl_date = new javax.swing.JLabel();
         txt_bank_name = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        txt_rec_name = new javax.swing.JTextField();
-        lbl_rec_name = new javax.swing.JLabel();
+        toyear = new javax.swing.JTextField();
+        lbl_rollno = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -190,6 +305,12 @@ public class NumberToWordsConverter {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btn_submit = new javax.swing.JButton();
+        lbl_rec_name1 = new javax.swing.JLabel();
+        txt_rec_name1 = new javax.swing.JTextField();
+        lbl_rollno1 = new javax.swing.JLabel();
+        lbl_rollno2 = new javax.swing.JLabel();
+        fromyear = new javax.swing.JTextField();
+        txt_rollno2 = new javax.swing.JTextField();
         lbl_mode_payment = new javax.swing.JLabel();
         combo_mode_payment = new javax.swing.JComboBox<>();
         txt_cheque_num = new javax.swing.JTextField();
@@ -359,21 +480,25 @@ public class NumberToWordsConverter {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_rec_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_rec_name.addActionListener(new java.awt.event.ActionListener() {
+        toyear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        toyear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_rec_nameActionPerformed(evt);
+                toyearActionPerformed(evt);
             }
         });
-        jPanel4.add(txt_rec_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 220, -1));
+        jPanel4.add(toyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 60, 130, -1));
 
-        lbl_rec_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbl_rec_name.setText("RECEIVER NAME");
-        jPanel4.add(lbl_rec_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 120, -1));
+        lbl_rollno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_rollno.setText("TO");
+        jPanel4.add(lbl_rollno, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 60, 50, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Java - Core", "Java Backend", "Software Testing", "Spring Boot", "JSP Servlet", "Jawa Swing", "Git & GitHub", "DBMS", " " }));
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 120, -1));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 220, -1));
 
         jSeparator2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 340, 260, 10));
@@ -390,8 +515,8 @@ public class NumberToWordsConverter {
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 70, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("HEAD");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 60, 20));
+        jLabel14.setText("DESCRIPTION");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 100, 20));
 
         txt_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_amount.addActionListener(new java.awt.event.ActionListener() {
@@ -462,7 +587,7 @@ public class NumberToWordsConverter {
                 jTextField13ActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 280, 30));
+        jPanel4.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 380, 30));
 
         jSeparator5.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 467, 240, -1));
@@ -490,6 +615,42 @@ public class NumberToWordsConverter {
             }
         });
         jPanel4.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 530, 120, 40));
+
+        lbl_rec_name1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_rec_name1.setText("RECEIVER NAME");
+        jPanel4.add(lbl_rec_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 120, -1));
+
+        txt_rec_name1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_rec_name1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_rec_name1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txt_rec_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 220, -1));
+
+        lbl_rollno1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_rollno1.setText("ROLL NO");
+        jPanel4.add(lbl_rollno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 70, -1));
+
+        lbl_rollno2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_rollno2.setText("FROM");
+        jPanel4.add(lbl_rollno2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 70, -1));
+
+        fromyear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fromyear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromyearActionPerformed(evt);
+            }
+        });
+        jPanel4.add(fromyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, 120, -1));
+
+        txt_rollno2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_rollno2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_rollno2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txt_rollno2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, 220, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 1290, 580));
 
@@ -539,55 +700,57 @@ public class NumberToWordsConverter {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 1420, 800));
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         HomePage hp = new HomePage();
         hp.show();
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }                                        
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }                                        
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }                                        
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }                                        
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         HomePage hp = new HomePage();
         hp.show();
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }                                        
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
        Login lg = new Login();
        lg.show();
        this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }                                        
 
-    private void txt_rec_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rec_nameActionPerformed
+    private void toyearActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_rec_nameActionPerformed
+    }                                      
 
-    private void txt_bank_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bank_nameActionPerformed
+    private void txt_bank_nameActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_bank_nameActionPerformed
+    }                                             
 
-    private void txt_receipt_numActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_receipt_numActionPerformed
+    private void txt_receipt_numActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_receipt_numActionPerformed
+    }                                               
 
-    private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amountActionPerformed
+    
+    
+    private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {                                           
         String s1 = txt_amount.getText();
         float amt = Float.parseFloat(s1);
         
@@ -600,42 +763,42 @@ public class NumberToWordsConverter {
         txt_total.setText(Float.toString(sum));
         
         txt_total_in_words.setText(NumberToWordsConverter.convert((int)sum));
-    }//GEN-LAST:event_txt_amountActionPerformed
+    }                                          
 
-    private void txt_cheque_numActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cheque_numActionPerformed
+    private void txt_cheque_numActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cheque_numActionPerformed
+    }                                              
 
-    private void txt_total_in_wordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_total_in_wordsActionPerformed
+    private void txt_total_in_wordsActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_total_in_wordsActionPerformed
+    }                                                  
 
-    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalActionPerformed
+    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_totalActionPerformed
+    }                                         
 
-    private void txt_cgstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cgstActionPerformed
+    private void txt_cgstActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cgstActionPerformed
+    }                                        
 
-    private void txt_sgstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sgstActionPerformed
+    private void txt_sgstActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_sgstActionPerformed
+    }                                        
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }                                            
 
-    private void txt_dd_numActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dd_numActionPerformed
+    private void txt_dd_numActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dd_numActionPerformed
+    }                                          
 
-    private void combo_mode_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_mode_paymentActionPerformed
+    private void combo_mode_paymentActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         if(combo_mode_payment.getSelectedIndex() == 0){
             lbl_dd_num.setVisible(true);
             txt_dd_num.setVisible(true);
-            lbl_rec_name.setVisible(true);
-            txt_rec_name.setVisible(true);
+            lbl_rollno.setVisible(true);
+            toyear.setVisible(true);
             txt_bank_name.setVisible(true);
             lbl_bank_name.setVisible(true);
             
@@ -649,8 +812,8 @@ public class NumberToWordsConverter {
             txt_dd_num.setVisible(false);
             txt_cheque_num.setVisible(false);
             lbl_dd_num.setVisible(false);
-            lbl_rec_name.setVisible(true);
-            txt_rec_name.setVisible(true);  
+            lbl_rollno.setVisible(true);
+            toyear.setVisible(true);  
             txt_bank_name.setVisible(false);
             lbl_bank_name.setVisible(false);
         }
@@ -659,8 +822,8 @@ public class NumberToWordsConverter {
             txt_dd_num.setVisible(false);
             txt_cheque_num.setVisible(true);
             lbl_dd_num.setVisible(false);
-            lbl_rec_name.setVisible(true);
-            txt_rec_name.setVisible(true);  
+            lbl_rollno.setVisible(true);
+            toyear.setVisible(true);  
             txt_bank_name.setVisible(true);
             lbl_bank_name.setVisible(true);
         }
@@ -669,8 +832,8 @@ public class NumberToWordsConverter {
             txt_dd_num.setVisible(false);
             txt_cheque_num.setVisible(false);
             lbl_dd_num.setVisible(false);
-            lbl_rec_name.setVisible(true);
-            txt_rec_name.setVisible(true);  
+            lbl_rollno.setVisible(true);
+            toyear.setVisible(true);  
             txt_bank_name.setVisible(false);
             lbl_bank_name.setVisible(false);
         }
@@ -679,34 +842,54 @@ public class NumberToWordsConverter {
             txt_dd_num.setVisible(false);
             txt_cheque_num.setVisible(false);
             lbl_dd_num.setVisible(false);
-            lbl_rec_name.setVisible(true);
-            txt_rec_name.setVisible(true);  
+            lbl_rollno.setVisible(true);
+            toyear.setVisible(true);  
             txt_bank_name.setVisible(false);
             lbl_bank_name.setVisible(false);
         }
-    }//GEN-LAST:event_combo_mode_paymentActionPerformed
+    }                                                  
 
-    private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
+    private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if(validation() == true){
-            
+            String s = insertData(); 
+            if(s.equals("Success")){
+                JOptionPane.showMessageDialog(this, "Record Inserted Successfully");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Record not inserted");
+            }
         }
-        Submit s = new Submit();
-        s.show();
-        this.dispose();
+
             
-    }//GEN-LAST:event_btn_submitActionPerformed
+    }                                          
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {                                    
         
-    }//GEN-LAST:event_jButton1KeyPressed
+    }                                   
 
-    private void jButton7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton7KeyPressed
+    private void jButton7KeyPressed(java.awt.event.KeyEvent evt) {                                    
         
-    }//GEN-LAST:event_jButton7KeyPressed
+    }                                   
 
-    private void jButton6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton6KeyPressed
+    private void jButton6KeyPressed(java.awt.event.KeyEvent evt) {                                    
        
-    }//GEN-LAST:event_jButton6KeyPressed
+    }                                   
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        jTextField13.setText(jComboBox2.getSelectedItem().toString());
+    }                                          
+
+    private void txt_rec_name1ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void fromyearActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void txt_rollno2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
 
     /**
      * @param args the command line arguments
@@ -733,10 +916,11 @@ public class NumberToWordsConverter {
         java.awt.EventQueue.invokeLater(() -> new AddFees().setVisible(true));
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btn_submit;
     private javax.swing.JComboBox<String> combo_mode_payment;
     private com.toedter.calendar.JDateChooser date_c;
+    private javax.swing.JTextField fromyear;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -772,18 +956,23 @@ public class NumberToWordsConverter {
     private javax.swing.JLabel lbl_dd_num;
     private javax.swing.JLabel lbl_gstin;
     private javax.swing.JLabel lbl_mode_payment;
-    private javax.swing.JLabel lbl_rec_name;
+    private javax.swing.JLabel lbl_rec_name1;
     private javax.swing.JLabel lbl_receipt_num;
     private javax.swing.JLabel lbl_receipt_num1;
+    private javax.swing.JLabel lbl_rollno;
+    private javax.swing.JLabel lbl_rollno1;
+    private javax.swing.JLabel lbl_rollno2;
+    private javax.swing.JTextField toyear;
     private javax.swing.JTextField txt_amount;
     private javax.swing.JTextField txt_bank_name;
     private javax.swing.JTextField txt_cgst;
     private javax.swing.JTextField txt_cheque_num;
     private javax.swing.JTextField txt_dd_num;
-    private javax.swing.JTextField txt_rec_name;
+    private javax.swing.JTextField txt_rec_name1;
     private javax.swing.JTextField txt_receipt_num;
+    private javax.swing.JTextField txt_rollno2;
     private javax.swing.JTextField txt_sgst;
     private javax.swing.JTextField txt_total;
     private javax.swing.JTextField txt_total_in_words;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
