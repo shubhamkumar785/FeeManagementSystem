@@ -974,5 +974,4 @@ public class NumberToWordsConverter {
     private javax.swing.JTextField txt_sgst;
     private javax.swing.JTextField txt_total;
     private javax.swing.JTextField txt_total_in_words;
-    // End of variables declaration                   
 }
