@@ -104,7 +104,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel6.setText("EDIT COURSE");
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 40, -1, 38));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 190, 120));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 200, 120));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,13 +132,28 @@ public class HomePage extends javax.swing.JFrame {
                 jPanel3MouseExited(evt);
             }
         });
+        jPanel3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel3KeyPressed(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("SEARCH RECORD");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 43, -1, 38));
+        jLabel4.setText("STUDENT LEDGER");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jLabel4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel4KeyPressed(evt);
+            }
+        });
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 43, 130, 38));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 200, 120));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 210, 120));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,7 +170,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel7.setText("VIEW REPORT");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 40, -1, 38));
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 200, 120));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 210, 120));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,7 +187,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel8.setText("VIEW RECORD");
         jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 40, -1, 38));
 
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 420, 190, 120));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 420, 200, 120));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -335,6 +350,25 @@ public class HomePage extends javax.swing.JFrame {
         lg.show();
         this.dispose();
     }//GEN-LAST:event_btn_logoutMouseClicked
+
+    private void jPanel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel3KeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel3KeyPressed
+
+    private void jLabel4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel4KeyPressed
+        // TODO add your handling code here:
+        StudentLedger sl = new StudentLedger();
+        sl.show();
+        this.dispose();
+    }//GEN-LAST:event_jLabel4KeyPressed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        StudentLedger sl = new StudentLedger();
+        sl.show();
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
